@@ -23,7 +23,7 @@ pygame.init()
 pygame.display.set_caption('NOKIA Snakes Game')
 game_window = pygame.display.set_mode((window_x, window_y))
 # Loading the song 
-mixer.music.load("song.mp3") 
+mixer.music.load("song.mp3")
   
 # Setting the volume 
 mixer.music.set_volume(0.7) 
@@ -174,18 +174,30 @@ while True:
 		fruit_position[0], fruit_position[1], 10, 10))
 
 	# Game Over conditions
+	
 	if snake_position[0] < 0 or snake_position[0] > window_x-10:
         
+		mixer.music.load("GameOver.mp3")
+		mixer.music.set_volume(0.7) 
+		# Start playing the song 
+		mixer.music.play(-1)
 		game_over()
 	if snake_position[1] < 0 or snake_position[1] > window_y-10:
-        
+
+		mixer.music.load("GameOver.mp3")
+		mixer.music.set_volume(0.7) 
+		# Start playing the song 
+		mixer.music.play(-1)
 		game_over()
 
 	# Touching the snake body
 	for block in snake_body[1:]:
 		if snake_position[0] == block[0] and snake_position[1] == block[1]:
             
-
+			mixer.music.load("GameOver.mp3")
+			mixer.music.set_volume(0.7) 
+			# Start playing the song 
+			mixer.music.play(-1)
 			game_over()
 
 	# displaying score continuously
@@ -196,4 +208,3 @@ while True:
 
 	# Frame Per Second /Refresh Rate
 	fps.tick(snake_speed)
-
